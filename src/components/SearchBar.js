@@ -3,12 +3,14 @@ import React from 'react';
 class SearchBar extends React.Component {
   submitSearch(event) {
     event.preventDefault();
-    console.log('submit search');
+    console.log('submit search on searchbar component');
+    this.props.search();
   }
+
   render() {
     return (
-      <form>
-        <input type="text" className="search" placeholder="search me..." onSubmit={(e) => this.submitSearch(e)}/>
+      <form onSubmit={(e) => this.submitSearch(e)}>
+        <input type="text" className="search" placeholder="search me..."/>
         <label>From: 
           <select>
             <option value="01">JAN</option>
@@ -93,6 +95,7 @@ class SearchBar extends React.Component {
             <option value="2017">2017</option>
           </select>
         </label>
+        <button type="submit">-> Go</button>
       </form>
     )
   }
