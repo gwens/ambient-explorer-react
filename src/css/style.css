@@ -1,5 +1,10 @@
-p {
-  color: purple;
+html {
+  box-sizing: border-box;
+  background:white;
+  font-family:'courier new';
+  font-size: 20px;
+  font-weight: 200;
+  color: seagreen;
 }
 
 header .icon {
