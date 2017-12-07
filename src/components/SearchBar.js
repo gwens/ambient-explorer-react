@@ -1,10 +1,11 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
+  // This function should take the form input and place it in the App's state as the current set of search filters
   submitSearch(event) {
     event.preventDefault();
     console.log('submit search on searchbar component');
-    this.props.search();
+    this.props.setSearchFilters();
   }
 
   render() {

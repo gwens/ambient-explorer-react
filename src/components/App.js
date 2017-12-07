@@ -7,19 +7,18 @@ import Viewer from './Viewer';
 class App extends React.Component {
   constructor() {
     super();
-    this.search = this.search.bind(this);
+    this.setSearchFilters = this.setSearchFilters.bind(this);
   }
 
-  search(){
+  setSearchFilters(){
     console.log('ran search on App component');
   }
 
   render() {
-    // Any where else
     return (
       <div className="navigator">
         <Header />
-        <SearchBar search={this.search}/>
+        <SearchBar setSearchFilters={this.setSearchFilters}/>
         <Results />
         <Viewer />
       </div>
