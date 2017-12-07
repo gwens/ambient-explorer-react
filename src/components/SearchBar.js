@@ -5,29 +5,36 @@ class SearchBar extends React.Component {
   submitSearch(event) {
     event.preventDefault();
     console.log('submit search on searchbar component');
-    this.props.setSearchFilters();
+    const filters = {
+      searchString: this.searchString.value,
+      yearFrom: this.yearFrom.value,
+      yearTo: this.yearTo.value,
+      monthFrom: this.monthFrom.value,
+      monthTo: this.monthTo.value
+    }
+    this.props.setSearchFilters(filters);
   }
 
   render() {
     return (
       <form onSubmit={(e) => this.submitSearch(e)}>
-        <input type="text" className="search" placeholder="search me..."/>
+        <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
         <label>From: 
-          <select>
-            <option value="01">JAN</option>
-            <option value="02">FEB</option>
-            <option value="03">MAR</option>
-            <option value="04">APR</option>
-            <option value="05">MAY</option>
-            <option value="06">JUN</option>
-            <option value="07">JUL</option>
-            <option value="08">AUG</option>
-            <option value="09">SEP</option>
+          <select ref={(input) => this.monthFrom = input}>
+            <option value="1">JAN</option>
+            <option value="2">FEB</option>
+            <option value="3">MAR</option>
+            <option value="4">APR</option>
+            <option value="5">MAY</option>
+            <option value="6">JUN</option>
+            <option value="7">JUL</option>
+            <option value="8">AUG</option>
+            <option value="9">SEP</option>
             <option value="10">OCT</option>
             <option value="11">NOV</option>
             <option value="12">DEC</option>
           </select>
-          <select>
+          <select ref={(input) => this.yearFrom = input}>
             <option value="1994">1994</option>
             <option value="1995">1995</option>
             <option value="1996">1996</option>
@@ -55,21 +62,21 @@ class SearchBar extends React.Component {
           </select>
         </label>
         <label>To:
-          <select>
-            <option value="01">JAN</option>
-            <option value="02">FEB</option>
-            <option value="03">MAR</option>
-            <option value="04">APR</option>
-            <option value="05">MAY</option>
-            <option value="06">JUN</option>
-            <option value="07">JUL</option>
-            <option value="08">AUG</option>
-            <option value="09">SEP</option>
+          <select ref={(input) => this.monthTo = input}>
+            <option value="1">JAN</option>
+            <option value="2">FEB</option>
+            <option value="3">MAR</option>
+            <option value="4">APR</option>
+            <option value="5">MAY</option>
+            <option value="6">JUN</option>
+            <option value="7">JUL</option>
+            <option value="8">AUG</option>
+            <option value="9">SEP</option>
             <option value="10">OCT</option>
             <option value="11">NOV</option>
             <option value="12">DEC</option>
           </select>
-          <select>
+          <select ref={(input) => this.yearTo = input}>
             <option value="1994">1994</option>
             <option value="1995">1995</option>
             <option value="1996">1996</option>
