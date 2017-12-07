@@ -24,7 +24,9 @@ class App extends React.Component {
   }
 
   setSearchFilters(filters){
-    console.table(filters);
+    // Create a copy of the current state first... but we are not updating them but replacing them completely so no point
+    const searchFilters = {...filters};
+    this.setState({ searchFilters });
   }
 
   render() {

@@ -21,15 +21,15 @@ class SearchBar extends React.Component {
         <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
         <label>From: 
           <select ref={(input) => this.monthFrom = input}>
-            <option value="1">JAN</option>
-            <option value="2">FEB</option>
-            <option value="3">MAR</option>
-            <option value="4">APR</option>
-            <option value="5">MAY</option>
-            <option value="6">JUN</option>
-            <option value="7">JUL</option>
-            <option value="8">AUG</option>
-            <option value="9">SEP</option>
+            <option value="01">JAN</option>
+            <option value="02">FEB</option>
+            <option value="03">MAR</option>
+            <option value="04">APR</option>
+            <option value="05">MAY</option>
+            <option value="06">JUN</option>
+            <option value="07">JUL</option>
+            <option value="08">AUG</option>
+            <option value="09">SEP</option>
             <option value="10">OCT</option>
             <option value="11">NOV</option>
             <option value="12">DEC</option>
@@ -63,15 +63,15 @@ class SearchBar extends React.Component {
         </label>
         <label>To:
           <select ref={(input) => this.monthTo = input}>
-            <option value="1">JAN</option>
-            <option value="2">FEB</option>
-            <option value="3">MAR</option>
-            <option value="4">APR</option>
-            <option value="5">MAY</option>
-            <option value="6">JUN</option>
-            <option value="7">JUL</option>
-            <option value="8">AUG</option>
-            <option value="9">SEP</option>
+            <option value="01">JAN</option>
+            <option value="02">FEB</option>
+            <option value="03">MAR</option>
+            <option value="04">APR</option>
+            <option value="05">MAY</option>
+            <option value="06">JUN</option>
+            <option value="07">JUL</option>
+            <option value="08">AUG</option>
+            <option value="09">SEP</option>
             <option value="10">OCT</option>
             <option value="11">NOV</option>
             <option value="12">DEC</option>
