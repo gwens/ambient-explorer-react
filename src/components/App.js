@@ -9,7 +9,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.setSearchFilters = this.setSearchFilters.bind(this);
-    this.loadEmails = this.loadEmails.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
