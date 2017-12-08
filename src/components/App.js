@@ -3,23 +3,25 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import Results from './Results';
 import Viewer from './Viewer';
+import emails from '../sample-emails';
 
 class App extends React.Component {
   constructor() {
     super();
     this.setSearchFilters = this.setSearchFilters.bind(this);
+    this.loadEmails = this.loadEmails.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
       searchFilters: {
         searchString: "",
-        yearFrom: 1994,
-        yearTo: 2017,
-        monthFrom: 1,
-        monthTo: 12
+        yearFrom: "1994",
+        yearTo: "2017",
+        monthFrom: "01",
+        monthTo: "12"
       },
-      emails: {},
-      searchResults: {}
+      emails: emails,
+      emailsFiltered: emails
     };
   }
 
