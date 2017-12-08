@@ -37,7 +37,7 @@ class App extends React.Component {
       <div className="navigator">
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters}/>
-        <Results />
+        <Results emailResults={this.state.emailResults}/>
         <Viewer />
       </div>
     )
