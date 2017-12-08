@@ -10,7 +10,7 @@ class Results extends React.Component {
           {
             Object
               .keys(this.props.emailResults)
-              .map(key => <EmailPreview />)
+              .map(key => <EmailPreview key={key} details={this.props.emailResults[key]}/>)
           }
         </ul>
       </div>
