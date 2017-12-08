@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import Results from './Results';
 import Viewer from './Viewer';
 import emails from '../sample-emails';
+import emailResults from '../sample-results';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,8 @@ class App extends React.Component {
         monthTo: "12"
       },
       emails: emails,
-      emailsFiltered: emails
+      emailsFiltered: emails, // The complete set of results
+      emailResults: emailResults // A sample of 25 emails to build the results display
     };
   }
 
