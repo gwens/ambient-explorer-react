@@ -45,7 +45,7 @@ class App extends React.Component {
       <div className="navigator">
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters}/>
-        <Results emailResults={this.state.emailResults}/>
+        <Results emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
         <Viewer selectedEmail={this.state.emails[this.state.selectedEmail]}/>
       </div>
     )
