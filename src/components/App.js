@@ -35,9 +35,9 @@ class App extends React.Component {
   }
 
   selectEmail(id){
-    let selectedEmail = {};
-    selectedEmail[id] = emails[id];
-    this.setState({ selectedEmail });
+    //let selectedEmail = {};
+    //selectedEmail[id] = emails[id];
+    this.setState({ selectedEmail: id });
   }
 
   render() {
@@ -46,7 +46,7 @@ class App extends React.Component {
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters}/>
         <Results emailResults={this.state.emailResults}/>
-        <Viewer selectedEmail={this.state.selectedEmail}/>
+        <Viewer selectedEmail={this.state.emails[this.state.selectedEmail]}/>
       </div>
     )
   }
