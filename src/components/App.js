@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   selectEmail(key){
-    const selectedEmail = key;
+    const selectedEmail = emails[key];
     this.setState({ selectedEmail });
   }
 
@@ -45,7 +45,7 @@ class App extends React.Component {
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters}/>
         <Results emailResults={this.state.emailResults}/>
-        <Viewer />
+        <Viewer selectedEmail={this.state.selectedEmail}/>
       </div>
     )
   }
