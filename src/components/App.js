@@ -34,8 +34,9 @@ class App extends React.Component {
     this.setState({ searchFilters });
   }
 
-  selectEmail(key){
-    const selectedEmail = emails[key];
+  selectEmail(id){
+    let selectedEmail = {};
+    selectedEmail[id] = emails[id];
     this.setState({ selectedEmail });
   }
 

@@ -3,7 +3,7 @@ import React from 'react';
 class Viewer extends React.Component {
   render() {
     return (
-      <p>Viewer</p>
+      <p>hello</p>
     )
   }
 }
