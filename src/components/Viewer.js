@@ -9,7 +9,7 @@ class Viewer extends React.Component {
           <div>Date: {selectedEmail.dateString}</div>
           <div>From: {selectedEmail.from}</div>
           <div>Subject: {selectedEmail.subject}</div>
-          <div>{selectedEmail.content}</div>
+          <div dangerouslySetInnerHTML={{ __html: selectedEmail.content }} />
         </div>
       )
     }
