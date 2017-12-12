@@ -4,7 +4,6 @@ import SearchBar from './SearchBar';
 import Results from './Results';
 import Viewer from './Viewer';
 import emails from '../sample-emails';
-import emailResults from '../sample-results';
 
 class App extends React.Component {
   constructor() {
@@ -22,8 +21,6 @@ class App extends React.Component {
         monthFrom: "01",
         monthTo: "12"
       },
-      emailsFiltered: emails, // The complete set of results
-      emailResults: emailResults, // A sample of 25 emails to build the results display
       selectedEmail: null // Holds the email to be displayed in the viewer
     };
   }
@@ -49,7 +46,7 @@ class App extends React.Component {
       <div className="navigator">
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters} clearEmailSelection={this.clearEmailSelection}/>
-        <Results emails={emails} searchFilters={this.state.searchFilters} emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
+        <Results emails={emails} searchFilters={this.state.searchFilters} selectEmail={this.selectEmail}/>
         <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
     )
