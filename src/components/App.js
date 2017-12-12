@@ -22,7 +22,6 @@ class App extends React.Component {
         monthFrom: "01",
         monthTo: "12"
       },
-      emails: emails,
       emailsFiltered: emails, // The complete set of results
       emailResults: emailResults, // A sample of 25 emails to build the results display
       selectedEmail: null // Holds the email to be displayed in the viewer
@@ -51,7 +50,7 @@ class App extends React.Component {
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters} clearEmailSelection={this.clearEmailSelection}/>
         <Results emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
-        <Viewer selectedEmail={this.state.emails[this.state.selectedEmail]}/>
+        <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
     )
   }
