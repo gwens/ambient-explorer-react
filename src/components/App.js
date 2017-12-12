@@ -16,7 +16,7 @@ class App extends React.Component {
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
       searchFilters: {
-        searchString: "",
+        searchString: "mail",
         yearFrom: "1994",
         yearTo: "2017",
         monthFrom: "01",
@@ -49,7 +49,7 @@ class App extends React.Component {
       <div className="navigator">
         <Header />
         <SearchBar setSearchFilters={this.setSearchFilters} clearEmailSelection={this.clearEmailSelection}/>
-        <Results emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
+        <Results emails={emails} searchFilters={this.state.searchFilters} emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
         <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
     )
