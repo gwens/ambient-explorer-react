@@ -13,11 +13,13 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.submitSearch(e)}>
-        <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
+      <div>
+        <form onSubmit={(e) => this.submitSearch(e)}>
+          <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
+          <button type="submit">-> Go</button>
+        </form>
         <DateRangePicker setDateFilters={this.props.setDateFilters}/>
-        <button type="submit">-> Go</button>
-      </form>
+      </div>
     )
   }
 }

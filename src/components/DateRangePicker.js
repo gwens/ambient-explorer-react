@@ -4,6 +4,7 @@ class DateRangePicker extends React.Component {
   constructor() {
     super()
     this.updateDateFilters = this.updateDateFilters.bind(this);
+    this.disableOptions = this.disableOptions.bind(this);
   }
   updateDateFilters(event) {
     console.log("update date filters");
@@ -16,14 +17,20 @@ class DateRangePicker extends React.Component {
     this.props.setDateFilters(dateFilters);
   }
 
+  disableOptions() {
+    console.log("yearfrom is " + this.yearFrom.value);
+    // Grey out the To dates that are earlier than the dateFrom selection, or vice versa.
+  }
+
   render() {
     // Testing greying out options in the dropdowns
     const disabled1 = true;
     const disabled2 = false;
+
     return (
-      <div>
+      <form onSubmit={(e) => this.updateDateFilters(e)}>
         <label>From: 
-        <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.monthFrom = input}>
+        <select onChange={this.disableOptions} ref={(input) => this.monthFrom = input}>
           <option value="01">JAN</option>
           <option value="02">FEB</option>
           <option value="03">MAR</option>
@@ -37,7 +44,7 @@ class DateRangePicker extends React.Component {
           <option value="11">NOV</option>
           <option value="12">DEC</option>
         </select>
-        <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.yearFrom = input}>
+        <select onChange={this.disableOptions} ref={(input) => this.yearFrom = input} value="1994">
           <option value="1994">1994</option>
           <option value="1995">1995</option>
           <option value="1996">1996</option>
@@ -65,7 +72,7 @@ class DateRangePicker extends React.Component {
         </select>
         </label>
         <label>To:
-        <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.monthTo = input}>
+        <select onChange={this.disableOptions} ref={(input) => this.monthTo = input}>
           <option value="01">JAN</option>
           <option value="02">FEB</option>
           <option value="03">MAR</option>
@@ -79,7 +86,7 @@ class DateRangePicker extends React.Component {
           <option value="11">NOV</option>
           <option value="12">DEC</option>
         </select>
-        <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.yearTo = input}>
+        <select onChange={this.disableOptions} ref={(input) => this.yearTo = input} defaultValue="2017">
           <option value="1994">1994</option>
           <option value="1995">1995</option>
           <option value="1996">1996</option>
@@ -106,7 +113,8 @@ class DateRangePicker extends React.Component {
           <option value="2017">2017</option>
         </select>
         </label>
-      </div>
+        <button type="submit">-> Apply Date Filter</button>
+      </form>
     )
   }
 }
