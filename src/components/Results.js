@@ -3,11 +3,11 @@ import EmailPreview from './EmailPreview';
 
 class Results extends React.Component {
   render() {
-    const searchFilters = this.props.searchFilters;
+    const searchString = this.props.searchString;
     const emails = this.props.emails;
     const emailIds = Object.keys(emails);
     const searchResults = emailIds.reduce((resultsArr, key) => {
-      if(emails[key].subject && emails[key].subject.indexOf(searchFilters.searchString) > -1) {
+      if(emails[key].subject && emails[key].subject.indexOf(searchString) > -1) {
         resultsArr.push(key);
       }
       return resultsArr;

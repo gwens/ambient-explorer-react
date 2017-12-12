@@ -8,14 +8,15 @@ import emails from '../sample-emails';
 class App extends React.Component {
   constructor() {
     super();
-    this.setSearchFilters = this.setSearchFilters.bind(this);
+    this.setSearchString = this.setSearchString.bind(this);
+    this.setDateFilters = this.setDateFilters.bind(this);
     this.selectEmail = this.selectEmail.bind(this);
     this.clearEmailSelection = this.clearEmailSelection.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
-      searchFilters: {
-        searchString: "",
+      searchString: "",
+      dateFilters: {
         yearFrom: "1994",
         yearTo: "2017",
         monthFrom: "01",
@@ -25,10 +26,14 @@ class App extends React.Component {
     };
   }
 
-  setSearchFilters(filters){
+  setSearchString(searchString){
+    this.setState({ searchString });
+  }
+
+  setDateFilters(filters){
     // Create a copy of the current state first... but we are not updating them but replacing them completely so no point
-    const searchFilters = {...filters};
-    this.setState({ searchFilters });
+    const dateFilters = {...filters};
+    this.setState({ dateFilters });
   }
 
   selectEmail(id){
@@ -45,8 +50,8 @@ class App extends React.Component {
     return (
       <div className="navigator">
         <Header />
-        <SearchBar setSearchFilters={this.setSearchFilters} clearEmailSelection={this.clearEmailSelection}/>
-        <Results emails={emails} searchFilters={this.state.searchFilters} selectEmail={this.selectEmail}/>
+        <SearchBar setSearchString={this.setSearchString} setDateFilters={this.setDateFilters} clearEmailSelection={this.clearEmailSelection}/>
+        <Results emails={emails} searchString={this.state.searchString} selectEmail={this.selectEmail}/>
         <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
     )
