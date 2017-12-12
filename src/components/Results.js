@@ -8,20 +8,17 @@ class Results extends React.Component {
     const emailIds = Object.keys(emails);
     const searchResults = emailIds.reduce((resultsArr, key) => {
       if(emails[key].subject && emails[key].subject.indexOf(searchFilters.searchString) > -1) {
-        console.log(emails[key].subject);
         resultsArr.push(key);
       }
       return resultsArr;
     }, []);
-    console.log(searchResults);
     return (
       <div>
         <p>Results Controls</p>
         <ul>
           {
-            Object
-              .keys(this.props.emailResults)
-              .map(key => <EmailPreview key={key} index={key} details={this.props.emailResults[key]} selectEmail={this.props.selectEmail}/>)
+            searchResults
+              .map(key => <EmailPreview key={key} index={key} details={emails[key]} selectEmail={this.props.selectEmail}/>)
           }
         </ul>
       </div>

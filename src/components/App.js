@@ -16,7 +16,7 @@ class App extends React.Component {
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
       searchFilters: {
-        searchString: "mail",
+        searchString: "",
         yearFrom: "1994",
         yearTo: "2017",
         monthFrom: "01",
