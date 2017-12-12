@@ -13,6 +13,7 @@ class SearchBar extends React.Component {
       monthTo: this.monthTo.value
     }
     this.props.setSearchFilters(filters);
+    this.props.clearEmailSelection();
   }
 
   render() {

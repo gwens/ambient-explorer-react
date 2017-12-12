@@ -11,6 +11,7 @@ class App extends React.Component {
     super();
     this.setSearchFilters = this.setSearchFilters.bind(this);
     this.selectEmail = this.selectEmail.bind(this);
+    this.clearEmailSelection = this.clearEmailSelection.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
@@ -40,11 +41,15 @@ class App extends React.Component {
     this.setState({ selectedEmail: id });
   }
 
+  clearEmailSelection(){
+    this.setState({ selectedEmail: null });
+  }
+
   render() {
     return (
       <div className="navigator">
         <Header />
-        <SearchBar setSearchFilters={this.setSearchFilters}/>
+        <SearchBar setSearchFilters={this.setSearchFilters} clearEmailSelection={this.clearEmailSelection}/>
         <Results emailResults={this.state.emailResults} selectEmail={this.selectEmail}/>
         <Viewer selectedEmail={this.state.emails[this.state.selectedEmail]}/>
       </div>
