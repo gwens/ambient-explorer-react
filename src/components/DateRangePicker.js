@@ -45,6 +45,7 @@ class DateRangePicker extends React.Component {
           {
             Object
               .keys(months)
+              .sort()
               .map(key => <option key={key} value={key}>{months[key]}</option>)
           }
         </select>
@@ -60,6 +61,7 @@ class DateRangePicker extends React.Component {
           {
             Object
               .keys(months)
+              .sort()
               .map(key => <option key={key} value={key} disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > key) ? true : false}>{months[key]}</option>)
           }
         </select>
