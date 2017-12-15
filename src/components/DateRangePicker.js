@@ -22,22 +22,29 @@ class DateRangePicker extends React.Component {
   render() {
     // Testing greying out options in the dropdowns
     const dateFilters = this.props.dateFilters;
+    const months = {
+      "01": "JAN", 
+      "02": "FEB", 
+      "03": "MAR", 
+      "04": "APR", 
+      "05": "MAY", 
+      "06": "JUN", 
+      "07": "JUL", 
+      "08": "AUG", 
+      "09": "SEP", 
+      "10": "OCT", 
+      "11": "NOV", 
+      "12": "DEC"
+    };
     return (
       <form>
         <label>From: 
         <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.monthFrom = input} defaultValue="01">
-          <option value="01">JAN</option>
-          <option value="02">FEB</option>
-          <option value="03">MAR</option>
-          <option value="04">APR</option>
-          <option value="05">MAY</option>
-          <option value="06" disabled={ dateFilters.monthTo >= "06" ? true : false}>JUN</option>
-          <option value="07">JUL</option>
-          <option value="08">AUG</option>
-          <option value="09">SEP</option>
-          <option value="10">OCT</option>
-          <option value="11">NOV</option>
-          <option value="12">DEC</option>
+          {
+            Object
+              .keys(months)
+              .map(key => <option key={key} value={key}>{months[key]}</option>)
+          }
         </select>
         <select onChange={(e) => this.updateDateFilters(e)}  ref={(input) => this.yearFrom = input} defaultValue="1994">
           <option value="1994">1994</option>
@@ -68,18 +75,11 @@ class DateRangePicker extends React.Component {
         </label>
         <label>To:
         <select onChange={(e) => this.updateDateFilters(e)}  ref={(input) => this.monthTo = input} defaultValue="12">
-          <option value="01" disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > "01") ? true : false}>JAN</option>
-          <option value="02" disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > "02") ? true : false}>FEB</option>
-          <option value="03" disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > "03") ? true : false}>MAR</option>
-          <option value="04" disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > "04") ? true : false}>APR</option>
-          <option value="05">MAY</option>
-          <option value="06">JUN</option>
-          <option value="07">JUL</option>
-          <option value="08">AUG</option>
-          <option value="09">SEP</option>
-          <option value="10">OCT</option>
-          <option value="11">NOV</option>
-          <option value="12">DEC</option>
+          {
+            Object
+              .keys(months)
+              .map(key => <option key={key} value={key} disabled={(dateFilters.yearTo === dateFilters.yearFrom && dateFilters.monthFrom > key) ? true : false}>{months[key]}</option>)
+          }
         </select>
         <select onChange={(e) => this.updateDateFilters(e)} ref={(input) => this.yearTo = input} defaultValue="2017">
           <option value="1994" disabled={dateFilters.yearFrom <= "1994" ? false : true}>1994</option>
