@@ -5,12 +5,22 @@ class Results extends React.Component {
   constructor() {
     super();
     this.getSearchResults = this.getSearchResults.bind(this);
+    this.filterEmailsByDate = this.filterEmailsByDate.bind(this);
   }
 
-  getSearchResults() {
-    const searchString = this.props.searchString;
+  filterEmailsByDate() {
     const emails = this.props.emails;
     const emailIds = Object.keys(emails);
+    const dateFilters = this.props.dateFilters;
+    const dateFromString = dateFilters.yearFrom + "_" + dateFilters.monthFrom;
+    const dateToString = dateFilters.yearTo + "_" + dateFilters.monthTo;
+    const filteredEmailIds = emailIds.filter(id => (dateFromString <= id.slice(4, 11)) && (id.slice(4,11) <= dateToString));
+    return filteredEmailIds;
+  }
+
+  getSearchResults(emailIds) {
+    const searchString = this.props.searchString;
+    const emails = this.props.emails;
     const searchResults = emailIds.reduce((resultsArr, key) => {
       if(emails[key].subject && emails[key].subject.indexOf(searchString) > -1) {
         resultsArr.push(key);
@@ -34,7 +44,8 @@ class Results extends React.Component {
   }
 
   render() {
-    const searchResults = this.getSearchResults();
+    const filteredEmailIds = this.filterEmailsByDate();
+    const searchResults = this.getSearchResults(filteredEmailIds);
     const maxResults = 25;
     const resultsPage = this.props.resultsPage;
     const numFullPages = Math.floor(searchResults.length / maxResults);
