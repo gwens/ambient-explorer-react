@@ -20,13 +20,9 @@ class Results extends React.Component {
     return searchResults;
   }
 
-  getPageOfResults() {
-    const searchResults = this.getSearchResults();
+  getPageOfResults(searchResults, maxResults, resultsPage) {
     const totalResults = searchResults.length;
-    const maxResults = 25;
-    const resultsPage = this.props.resultsPage;
     const numFullPages = Math.floor(totalResults / maxResults);
-    
     if (totalResults <= maxResults) {
       return searchResults;
     } else if (resultsPage <= numFullPages){
@@ -38,11 +34,15 @@ class Results extends React.Component {
   }
 
   render() {
-    const pageOfResults = this.getPageOfResults();
+    const searchResults = this.getSearchResults();
+    const maxResults = 25;
+    const resultsPage = this.props.resultsPage;
+    const numFullPages = Math.floor(searchResults.length / maxResults);
+    const pageOfResults = this.getPageOfResults(searchResults, maxResults, resultsPage);
     return (
       <div>
         <button onClick={this.props.prevPage}>&#8249;&#8249;</button>
-        <button onClick={this.props.nextPage}>&#8250;&#8250;</button>
+        <button onClick={resultsPage <= numFullPages ? this.props.nextPage : null}>&#8250;&#8250;</button>
         <ul>
           {
             pageOfResults
