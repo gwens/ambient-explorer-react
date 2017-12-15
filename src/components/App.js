@@ -72,7 +72,7 @@ class App extends React.Component {
     return (
       <div className="navigator">
         <Header />
-        <SearchBar setSearchString={this.setSearchString} setDateFilters={this.setDateFilters} clearEmailSelection={this.clearEmailSelection} setPage={this.setPage}/>
+        <SearchBar setSearchString={this.setSearchString} dateFilters={this.state.dateFilters} setDateFilters={this.setDateFilters} clearEmailSelection={this.clearEmailSelection} setPage={this.setPage}/>
         <Results emails={emails} dateFilters={this.state.dateFilters} searchString={this.state.searchString} selectEmail={this.selectEmail} resultsPage={this.state.resultsPage} nextPage={this.nextPage} prevPage={this.prevPage}/>
         <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
