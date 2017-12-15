@@ -81,7 +81,7 @@ class Results extends React.Component {
         <ul>
           {
             pageOfResults
-              .map(key => <EmailPreview key={key} index={key} details={this.props.emails[key]} selectEmail={this.props.selectEmail}/>)
+              .map(key => <EmailPreview key={key} index={key} details={this.props.emails[key]} selectEmail={this.props.selectEmail} searchString={this.props.searchString}/>)
           }
         </ul>
       </div>

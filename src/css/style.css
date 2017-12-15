@@ -10,3 +10,7 @@ html {
 header .icon {
   max-height: 100px;
 }
+
+.hl {
+  background: rgba(207, 226, 33, 0.274);
+}
