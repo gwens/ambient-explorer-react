@@ -41,7 +41,8 @@ class Results extends React.Component {
     const pageOfResults = this.getPageOfResults();
     return (
       <div>
-        <p>Results Controls</p>
+        <button onClick={this.props.prevPage}>&#8249;&#8249;</button>
+        <button onClick={this.props.nextPage}>&#8250;&#8250;</button>
         <ul>
           {
             pageOfResults
