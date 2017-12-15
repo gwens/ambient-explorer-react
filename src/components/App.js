@@ -12,6 +12,8 @@ class App extends React.Component {
     this.setDateFilters = this.setDateFilters.bind(this);
     this.selectEmail = this.selectEmail.bind(this);
     this.clearEmailSelection = this.clearEmailSelection.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
@@ -22,7 +24,8 @@ class App extends React.Component {
         monthFrom: "01",
         monthTo: "12"
       },
-      selectedEmail: null // Holds the email to be displayed in the viewer
+      selectedEmail: null, // Holds the email to be displayed in the viewer
+      resultsPage: 1
     };
   }
 
@@ -44,6 +47,18 @@ class App extends React.Component {
 
   clearEmailSelection(){
     this.setState({ selectedEmail: null });
+  }
+
+  nextPage(){
+    let resultsPage = this.state.resultsPage;
+    resultsPage++; // Need to figure out if you're on the last page or not, but do this in Results
+    this.setState( { resultsPage });
+  }
+
+  prevPage(){
+    let resultsPage = this.state.resultsPage;
+    resultsPage = resultsPage === 1 ? 1 : resultsPage - 1 // Try putting this logic here for now, but might want them both in the same place
+    this.setState( { resultsPage });
   }
 
   render() {
