@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
           <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
           <button type="submit">-> Go</button>
         </form>
-        <DateRangePicker setDateFilters={this.props.setDateFilters}/>
+        <DateRangePicker setDateFilters={this.props.setDateFilters} setPage={this.props.setPage}/>
       </div>
     )
   }

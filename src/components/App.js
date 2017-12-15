@@ -14,6 +14,7 @@ class App extends React.Component {
     this.clearEmailSelection = this.clearEmailSelection.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
+    this.setPage = this.setPage.bind(this);
     // Get initial state
     // Not sure if should use numbers or strings for dates (especially months, as 01, 02, etc)
     this.state = {
@@ -61,12 +62,18 @@ class App extends React.Component {
     this.setState( { resultsPage });
   }
 
+  setPage(x) {
+    let resultsPage = this.state.resultsPage;
+    resultsPage = x;
+    this.setState( { resultsPage });
+  }
+
   render() {
     return (
       <div className="navigator">
         <Header />
-        <SearchBar setSearchString={this.setSearchString} setDateFilters={this.setDateFilters} clearEmailSelection={this.clearEmailSelection}/>
-        <Results emails={emails} dateFilters={this.state.dateFilters} searchString={this.state.searchString} selectEmail={this.selectEmail} resultsPage={this.state.resultsPage}nextPage={this.nextPage} prevPage={this.prevPage}/>
+        <SearchBar setSearchString={this.setSearchString} setDateFilters={this.setDateFilters} clearEmailSelection={this.clearEmailSelection} setPage={this.setPage}/>
+        <Results emails={emails} dateFilters={this.state.dateFilters} searchString={this.state.searchString} selectEmail={this.selectEmail} resultsPage={this.state.resultsPage} nextPage={this.nextPage} prevPage={this.prevPage}/>
         <Viewer selectedEmail={emails[this.state.selectedEmail]}/>
       </div>
     )
