@@ -20,7 +20,7 @@ class Results extends React.Component {
     return filteredEmailIds;
   }
 
-  getSearchResults(emailIds) {
+  getSearchResultsOld(emailIds) {
     const searchString = this.props.searchString;
     const emails = this.props.emails;
     const searchResults = emailIds.reduce((resultsArr, key) => {
@@ -30,6 +30,28 @@ class Results extends React.Component {
       return resultsArr;
     }, []);
     return searchResults;
+  }
+
+  getSearchResults(emailIds) {
+    const emails = this.props.emails;
+    const searchString = this.props.searchString.toLowerCase(); // change to case insensitive
+    let resultsAll = emailIds.reduce((accumulator, id) => {
+      // Using .indexOf instead of .match(regex) for performance
+      const subjectMatch = emails[id].subject && (emails[id].subject.toLowerCase().indexOf(searchString) > -1) ? 3 : 0;
+      const fromMatch = emails[id].from && (emails[id].from.toLowerCase().indexOf(searchString) > -1) ? 2 : 0;
+      const contentMatch = emails[id].content && (emails[id].content.toLowerCase().indexOf(searchString) > -1) ? 1 : 0;
+      const totalMatch = subjectMatch + fromMatch + contentMatch;
+      // If there is a match
+      if (totalMatch) {
+        // Assign a priority number and at it to the result object as an additional property so we can sort them after
+        accumulator.push({ "id" : id, "priority": totalMatch});
+      }
+      return accumulator;
+    }, [])
+    const resultsSorted = resultsAll.sort((a,b) => a.priority > b.priority ? -1 : 1);
+    // Map the array of objects back to an array of the IDs only before returning it
+    const resultsIds = resultsSorted.map(item => item.id);
+    return resultsIds;
   }
 
   getPageOfResults(searchResults, maxResults, resultsPage) {

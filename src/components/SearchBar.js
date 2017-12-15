@@ -5,7 +5,6 @@ class SearchBar extends React.Component {
   // This function should take the form input and place it in the App's state as the current set of search filters
   submitSearch(event) {
     event.preventDefault();
-    console.log('submit search on searchbar component');
     const searchString = this.searchString.value;
     this.props.setSearchString(searchString);
     this.props.clearEmailSelection();
@@ -14,9 +13,8 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={(e) => this.submitSearch(e)}>
-          <input ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
-          <button type="submit">-> Go</button>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input onChange={(e) => this.submitSearch(e)} ref={(input) => this.searchString = input} type="text" className="search" placeholder="search me..."/>
         </form>
         <DateRangePicker dateFilters={this.props.dateFilters} setDateFilters={this.props.setDateFilters} setPage={this.props.setPage}/>
       </div>
