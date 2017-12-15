@@ -33,7 +33,7 @@ class DateRangePicker extends React.Component {
     return (
       <form onSubmit={(e) => this.updateDateFilters(e)}>
         <label>From: 
-        <select onChange={this.disableOptions} ref={(input) => this.monthFrom = input} defaultValue="10">
+        <select onChange={this.disableOptions} ref={(input) => this.monthFrom = input} defaultValue="01">
           <option value="01">JAN</option>
           <option value="02">FEB</option>
           <option value="03">MAR</option>

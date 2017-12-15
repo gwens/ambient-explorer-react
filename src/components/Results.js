@@ -15,6 +15,8 @@ class Results extends React.Component {
     const dateFromString = dateFilters.yearFrom + "_" + dateFilters.monthFrom;
     const dateToString = dateFilters.yearTo + "_" + dateFilters.monthTo;
     const filteredEmailIds = emailIds.filter(id => (dateFromString <= id.slice(4, 11)) && (id.slice(4,11) <= dateToString));
+    // Sort the emails into chronological order, oldest first
+    filteredEmailIds.sort((a, b) => a > b ? 1 : -1);
     return filteredEmailIds;
   }
 
