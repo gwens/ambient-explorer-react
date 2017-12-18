@@ -3,7 +3,7 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import Results from './Results';
 import Viewer from './Viewer';
-import emails from '../all-emails';
+import emails from '../sample-emails';
 
 class App extends React.Component {
   constructor() {
