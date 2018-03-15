@@ -5,7 +5,6 @@ Application for searching and exploring the archives of Hyperreal's Ambient musi
 This is version 2 of 3, using React and a local subset of the data. See the final app here:
 
 https://github.com/gwens/ambient-explorer-react-elastic
-https://ambient-explorer.ml
 
 ## Install
 
